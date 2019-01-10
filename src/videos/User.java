@@ -7,12 +7,15 @@ public class User {
 	private String surname;
 	private String password;
 	private Date registrationDate;
+	private String username;
 	
 	public User(String name, String surname, String password) {
 		this.name = name;
 		this.surname = surname;
 		this.password = password;
 		registrationDate = new Date();
+		username = name + "." + surname;
+		username = username.toLowerCase();
 	}
 	
 	public String getUserName() {
@@ -42,8 +45,13 @@ public class User {
 		System.out.println("Usuari: " + name + " " + surname + ". Data de registre: " + registrationDate + ".\n");
 	}
 	
-	public void createVideo(String username, String title, List<String> tags, Map<Integer,Video> videoList) {
+	public void createVideo(String title, List<String> tags, Map<Integer,Video> videoList) {
 		Video createdVideo = new Video(username, title, tags);
 		videoList.put(createdVideo.getVideoId(), createdVideo);
 	}
+	/*public void myVideos(String username, Map<Integer,Video> videoList) {
+		for(Map.Entry<Integer, Video> username : videoList.entrySet()) {
+			username.getValue().getUserInfo();
+		}
+	}*/
 }
