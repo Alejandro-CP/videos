@@ -30,6 +30,6 @@ public class User {
 		}
 	}
 	public void getUserInfo() {
-		System.out.println("Usuari: " + name + " " + surname + ".\nData de registre: " + registrationDate + ".");
+		System.out.println("Usuari: " + name + " " + surname + ". Data de registre: " + registrationDate + ".\n");
 	}
 }
