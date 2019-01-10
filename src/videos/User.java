@@ -21,6 +21,15 @@ public class User {
 	public Date getRegistrationDate() {
 		return registrationDate;
 	}
+	
+	public boolean checkPassword(String password) {
+		if(this.password.equals(password)) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
 	public void modifyPassword(String password, String newPassword) {
 		if(this.password.equals(password)) {
 			this.password = newPassword;
