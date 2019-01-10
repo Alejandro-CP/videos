@@ -8,13 +8,15 @@ public class Video {
 	private String title;
 	private int videoId;
 	private List<String> tags;
+	private String username;
 	
-	public Video(String title, List<String> tags) {
+	public Video(String username, String title, List<String> tags) {
 		idCount++;
 		setTitle(title);
 		setTags(tags);
 		videoId = idCount;
 		urlAddress = "https://domain.com/videos/" + videoId;
+		this.username = username;
 	}
 	
 	public String getTitle() {
@@ -32,11 +34,14 @@ public class Video {
 	public void setTags(List<String> newTags) {
 		tags = newTags;
 	}
+	public String getUserName() {
+		return username;
+	}
 	public int getVideoId() {
 		return videoId;
 	}
 	public void getVideoInfo() {
-		System.out.println("Títol: " + title + ". URL: " + urlAddress + ". Tags: " + tags + ".");
+		System.out.println("Títol: " + title + ". Usuari: " + username + ". URL: " + urlAddress + ". Tags: " + tags + ".");
 	}
 
 }
