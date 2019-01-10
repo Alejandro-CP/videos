@@ -49,9 +49,11 @@ public class User {
 		Video createdVideo = new Video(username, title, tags);
 		videoList.put(createdVideo.getVideoId(), createdVideo);
 	}
-	/*public void myVideos(String username, Map<Integer,Video> videoList) {
-		for(Map.Entry<Integer, Video> username : videoList.entrySet()) {
-			username.getValue().getUserInfo();
+	public void myVideos(Map<Integer,Video> videoList) {
+		for(Map.Entry<Integer, Video> userVideos : videoList.entrySet()) {
+			if(userVideos.getValue().getUserName().equals(username)) {
+				System.out.println(userVideos.getValue().getTitle());
+			}
 		}
-	}*/
+	}
 }
