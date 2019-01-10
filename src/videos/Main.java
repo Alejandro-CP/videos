@@ -15,11 +15,10 @@ public class Main {
 	
 	public static void addUser(String name, String surname, String password) {
 		if(checkUserName(name, surname) && checkPassword(password)) {
-			String username = getUsername(name, surname);
-			if(userList.containsKey(username)) {
+			if(userList.containsKey(getUsername(name, surname))) {
 				System.out.println("L'usuari " + name + " " + surname + " ja està registrat.\nL'usuari no s'ha creat.\n");
 			}else {
-				userList.put(username, new User(name, surname, password));
+				userList.put(getUsername(name, surname), new User(name, surname, password));
 				System.out.println("L'usuari " + name + " " + surname +" s'ha creat correctament.\n");
 			}		
 		}else {
@@ -49,8 +48,7 @@ public class Main {
 	}
 	
 	public static boolean correctPassword(String name, String surname, String password) {
-		String username = getUsername(name, surname);
-		if(userList.get(username).checkPassword(password)) {
+		if(userList.get(getUsername(name, surname)).checkPassword(password)) {
 			return true;
 		}else {
 			return false;
@@ -64,7 +62,7 @@ public class Main {
 	
 	public static void addVideo(String name, String surname, String password, String title, List<String> tags) {
 		if(correctPassword(name, surname, password)) {
-			userList.get(getUsername(name, surname)).createVideo(title, tags, videoList);
+			userList.get(getUsername(name, surname)).createVideo(getUsername(name, surname), title, tags, videoList);
 			System.out.println("El vídeo s'ha creat correctament.\n");
 		}else {
 			System.out.println("Contrassenya incorrecta. El vídeo no s'ha creat.\n");
@@ -98,6 +96,7 @@ public class Main {
 		addUser("Marco", "López", "1234567890");
 		addVideo("Marco", "López", "1234567890", "Video1", genericTagList);
 		addVideo("Marco", "López", "1234576890", "Video1", genericTagList);
+		addVideo("Marco", "López", "1234567890", "Video2", genericTagList);
 	}
 
 }
