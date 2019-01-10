@@ -62,7 +62,7 @@ public class Main {
 	
 	public static void addVideo(String name, String surname, String password, String title, List<String> tags) {
 		if(correctPassword(name, surname, password)) {
-			userList.get(getUsername(name, surname)).createVideo(getUsername(name, surname), title, tags, videoList);
+			userList.get(getUsername(name, surname)).createVideo(title, tags, videoList);
 			System.out.println("El vídeo s'ha creat correctament.\n");
 		}else {
 			System.out.println("Contrassenya incorrecta. El vídeo no s'ha creat.\n");
