@@ -3,14 +3,18 @@ package videos;
 import java.util.*;
 
 public class Video {
+	private static int idCount;
 	private String urlAddress;
 	private String title;
+	private int videoId;
 	private List<String> tags;
 	
 	public Video(String title, List<String> tags) {
-		this.title = title;
-		this.tags = tags;
-		//falta crear la URL del video
+		idCount++;
+		setTitle(title);
+		setTags(tags);
+		videoId = idCount;
+		urlAddress = "https://domain.com/videos/" + videoId;
 	}
 	
 	public String getTitle() {
@@ -22,11 +26,17 @@ public class Video {
 	public List<String> getTags(){
 		return tags;
 	}
-	public void modifyTitle(String newTitle) {
+	public void setTitle(String newTitle) {
 		title = newTitle;
 	}
-	public void modifyTags(List<String> newTags) {
+	public void setTags(List<String> newTags) {
 		tags = newTags;
+	}
+	public int getVideoId() {
+		return videoId;
+	}
+	public void getVideoInfo() {
+		System.out.println("Títol: " + title + ". URL: " + urlAddress + ". Tags: " + tags + ".");
 	}
 
 }
