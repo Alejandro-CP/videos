@@ -10,19 +10,20 @@ public class Main {
 
 	public static void main(String[] args) {
 		//test1();
-		test2();
+		//test2();
+		test3();
 		}
 	
 	public static void addUser(String name, String surname, String password) {
 		if(checkUserName(name, surname) && checkPassword(password)) {
 			if(userList.containsKey(getUsername(name, surname))) {
-				System.out.println("L'usuari " + name + " " + surname + " ja està registrat.\nL'usuari no s'ha creat.\n");
+				System.out.println("L'usuari/a " + name + " " + surname + " ja està registrat.\nL'usuari/a no s'ha creat.\n");
 			}else {
 				userList.put(getUsername(name, surname), new User(name, surname, password));
-				System.out.println("L'usuari " + name + " " + surname +" s'ha creat correctament.\n");
+				System.out.println("L'usuari/a " + name + " " + surname +" s'ha creat correctament.\n");
 			}		
 		}else {
-			System.out.println("L'usuari no s'ha creat.\n");
+			System.out.println("L'usuari/a no s'ha creat.\n");
 		}
 	}
 	
@@ -69,6 +70,12 @@ public class Main {
 		}
 	}
 	
+	public static void listUserVideos(String name, String surname, String password) {
+		if(correctPassword(name, surname, password)) {
+			userList.get(getUsername(name, surname)).myVideos(videoList);
+		}
+	}
+	
 	// Testing creating and adding users
 	/*public static void test1(){
 		try {
@@ -92,11 +99,24 @@ public class Main {
 		}
 	}*/
 	// Testing creation and addition of videos
-	public static void test2() {
+	/*public static void test2() {
 		addUser("Marco", "López", "1234567890");
 		addVideo("Marco", "López", "1234567890", "Video1", genericTagList);
 		addVideo("Marco", "López", "1234576890", "Video1", genericTagList);
 		addVideo("Marco", "López", "1234567890", "Video2", genericTagList);
+	}*/
+	// Testing listing user videos
+	public static void test3() {
+		addUser("Marco", "López", "1234567890");
+		addUser("María", "Pérez", "0987654321");
+		addVideo("Marco", "López", "1234567890", "Video1", genericTagList);
+		addVideo("Marco", "López", "1234567890", "Video2", genericTagList);
+		addVideo("Marco", "López", "1234567890", "Video3", genericTagList);
+		addVideo("Marco", "López", "1234567890", "Video4", genericTagList);
+		addVideo("María", "Pérez", "0987654321", "Video5", genericTagList);
+		addVideo("María", "Pérez", "0987654321", "Video6", genericTagList);
+		listUserVideos("Marco", "López", "1234567890");
+		listUserVideos("María", "Pérez", "0987654321");
 	}
 
 }
