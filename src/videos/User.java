@@ -32,4 +32,10 @@ public class User {
 	public void getUserInfo() {
 		System.out.println("Usuari: " + name + " " + surname + ". Data de registre: " + registrationDate + ".\n");
 	}
+	
+	public void createVideo(String title, List<String> tags, Map<Integer,Video> videoList) {
+		String username = name + "." + surname;
+		Video createdVideo = new Video(username, title, tags);
+		videoList.put(createdVideo.getVideoId(), createdVideo);
+	}
 }
