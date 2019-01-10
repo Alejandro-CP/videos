@@ -29,4 +29,7 @@ public class User {
 			System.out.println("Contrassenya incorrecta.\n" + "No s'ha canviat la contrassenya.");
 		}
 	}
+	public void getUserInfo() {
+		System.out.println("Usuari: " + name + " " + surname + ".\nData de registre: " + registrationDate + ".");
+	}
 }
