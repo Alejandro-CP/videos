@@ -22,14 +22,14 @@ public class Main {
 			String username = name + "." + surname;
 			username = username.toLowerCase();
 			if(userList.containsKey(username)) {
-				System.out.println("L'usuari " + name + " " + surname + " ja està registrat.\nL'usuari no s'ha creat.");
+				System.out.println("L'usuari " + name + " " + surname + " ja està registrat.\nL'usuari no s'ha creat.\n");
 			}else {
 				userList.put(username, new User(name, surname, password));
-				System.out.println("L'usuari " + name + " " + surname +" s'ha creat correctament.");
+				System.out.println("L'usuari " + name + " " + surname +" s'ha creat correctament.\n");
 			}
 			
 		}else {
-			System.out.println("L'usuari no s'ha creat.");
+			System.out.println("L'usuari no s'ha creat.\n");
 		}
 	}
 	
