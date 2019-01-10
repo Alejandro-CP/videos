@@ -42,8 +42,7 @@ public class User {
 		System.out.println("Usuari: " + name + " " + surname + ". Data de registre: " + registrationDate + ".\n");
 	}
 	
-	public void createVideo(String title, List<String> tags, Map<Integer,Video> videoList) {
-		String username = name + "." + surname;
+	public void createVideo(String username, String title, List<String> tags, Map<Integer,Video> videoList) {
 		Video createdVideo = new Video(username, title, tags);
 		videoList.put(createdVideo.getVideoId(), createdVideo);
 	}
