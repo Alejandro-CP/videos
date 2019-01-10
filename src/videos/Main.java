@@ -8,14 +8,8 @@ public class Main {
 	static Map<Integer, Video> videoList = new HashMap<>();
 
 	public static void main(String[] args) {
-		try {
-			test1();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		test1();
 		}
-
-	}
 	
 	public static void addUser(String name, String surname, String password) {
 		if(checkUserName(name, surname) && checkPassword(password)) {
@@ -55,20 +49,25 @@ public class Main {
 	}
 	
 	// Testing creating and adding users
-	public static void test1() throws InterruptedException {
-		addUser("", "López", "123456");
-		TimeUnit.SECONDS.sleep(2);
-		addUser("Marco", "", "1234567890");
-		TimeUnit.SECONDS.sleep(2);
-		addUser("Marco", "López", "1234567890123456789");
-		TimeUnit.SECONDS.sleep(2);
-		addUser("Marco", "López", "1234567890");
-		TimeUnit.SECONDS.sleep(2);
-		addUser("Marco", "López", "0987654321");
-		TimeUnit.SECONDS.sleep(2);
-		addUser("María", "Pérez", "0987654321");
-		for(Map.Entry<String, User> username : userList.entrySet()) {
-			username.getValue().getUserInfo();
+	public static void test1(){
+		try {
+			addUser("", "López", "123456");
+			TimeUnit.SECONDS.sleep(2);
+			addUser("Marco", "", "1234567890");
+			TimeUnit.SECONDS.sleep(2);
+			addUser("Marco", "López", "1234567890123456789");
+			TimeUnit.SECONDS.sleep(2);
+			addUser("Marco", "López", "1234567890");
+			TimeUnit.SECONDS.sleep(2);
+			addUser("Marco", "López", "0987654321");
+			TimeUnit.SECONDS.sleep(2);
+			addUser("María", "Pérez", "0987654321");
+			for(Map.Entry<String, User> username : userList.entrySet()) {
+				username.getValue().getUserInfo();
+			}
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
