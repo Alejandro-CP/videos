@@ -50,10 +50,12 @@ public class User {
 		videoList.put(createdVideo.getVideoId(), createdVideo);
 	}
 	public void myVideos(Map<Integer,Video> videoList) {
+		System.out.println("Els vídeos de l'usuari/a " + name + " " + surname + " són:");
 		for(Map.Entry<Integer, Video> userVideos : videoList.entrySet()) {
 			if(userVideos.getValue().getUserName().equals(username)) {
 				System.out.println(userVideos.getValue().getTitle());
 			}
 		}
+		System.out.println("");
 	}
 }
