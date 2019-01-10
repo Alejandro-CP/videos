@@ -4,7 +4,8 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class Main {
-	static Map<String,User> userList = new HashMap<>();
+	static Map<String, User> userList = new HashMap<>();
+	static Map<Integer, Video> videoList = new HashMap<>();
 
 	public static void main(String[] args) {
 		try {
@@ -55,13 +56,16 @@ public class Main {
 	
 	// Testing creating and adding users
 	public static void test1() throws InterruptedException {
-		//addUser("", "López", "123456");
-		//addUser("Marco", "", "1234567890");
-		//addUser("Marco", "López", "1234567890123456789");
+		addUser("", "López", "123456");
+		TimeUnit.SECONDS.sleep(2);
+		addUser("Marco", "", "1234567890");
+		TimeUnit.SECONDS.sleep(2);
+		addUser("Marco", "López", "1234567890123456789");
+		TimeUnit.SECONDS.sleep(2);
 		addUser("Marco", "López", "1234567890");
-		TimeUnit.SECONDS.sleep(5);
+		TimeUnit.SECONDS.sleep(2);
 		addUser("Marco", "López", "0987654321");
-		TimeUnit.SECONDS.sleep(5);
+		TimeUnit.SECONDS.sleep(2);
 		addUser("María", "Pérez", "0987654321");
 		for(Map.Entry<String, User> username : userList.entrySet()) {
 			username.getValue().getUserInfo();
