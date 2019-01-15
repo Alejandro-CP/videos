@@ -3,59 +3,63 @@ package videos;
 import java.util.*;
 
 public class User {
+	private static int userCount;
+	private int userId;
 	private String name;
 	private String surname;
 	private String password;
+	private static final int minLength = 8;
+	private static final int maxLength = 16;
 	private Date registrationDate;
-	private String username;
 	
-	public User(String name, String surname, String password) {
+	public User(String name, String surname, String password) throws Exception{
+		if(name.equals("")) throw new Exception("El nom de l'usuari ha de tenir com a mínim un caràcter");
+		if(surname.equals("")) throw new Exception("El cognom de l'usuari ha de tenir com a mínim un caràcter");
+		if((password.length() < minLength) || (password.length() > maxLength)) throw new Exception
+		("La contrassenya ha de tenir un mínim de " + minLength + " caràcters i un màxim de " + maxLength + " caràcters.");
+		userCount++;
+		userId = userCount;
 		this.name = name;
 		this.surname = surname;
 		this.password = password;
 		registrationDate = new Date();
-		username = name + "." + surname;
-		username = username.toLowerCase();
 	}
 	
-	public String getUserName() {
-		return name + "." + surname;
+	public String getName() {
+		return name;
+	}
+	public String getSurame() {
+		return surname;
+	}
+	public int getUserId() {
+		return userId;
 	}
 	public Date getRegistrationDate() {
 		return registrationDate;
 	}
 	
-	public boolean checkPassword(String password) {
+	public String modPassword(String password, String newPassword) throws Exception {
 		if(this.password.equals(password)) {
-			return true;
-		}else {
-			return false;
-		}
-	}
-	
-	public void modifyPassword(String password, String newPassword) {
-		if(this.password.equals(password)) {
+			if((newPassword.length() < minLength) || (newPassword.length() > maxLength)) throw new Exception
+				("La nova contrassenya ha de tenir un mínim de " + minLength + " caràcters i un màxim de " + maxLength + " caràcters.");
 			this.password = newPassword;
-			System.out.println("Contrassenya canviada correctament.");
+			return "La contrassenya s'ha canviat correctament.";
 		}else {
-			System.out.println("Contrassenya incorrecta.\n" + "No s'ha canviat la contrassenya.");
+			return "No s'ha pogut canviar la contrassenya.";
 		}
 	}
-	public void getUserInfo() {
-		System.out.println("Usuari: " + name + " " + surname + ". Data de registre: " + registrationDate + ".\n");
-	}
 	
-	public void createVideo(String title, List<String> tags, Map<Integer,Video> videoList) {
-		Video createdVideo = new Video(username, title, tags);
-		videoList.put(createdVideo.getVideoId(), createdVideo);
+	public void createVideo(String title, List<String> tagList, List<Video> videoList) throws Exception{
+		videoList.add(new Video(this.userId, title, tagList));
 	}
-	public void myVideos(Map<Integer,Video> videoList) {
-		System.out.println("Els vídeos de l'usuari/a " + name + " " + surname + " són:");
-		for(Map.Entry<Integer, Video> userVideos : videoList.entrySet()) {
-			if(userVideos.getValue().getUserName().equals(username)) {
-				System.out.println(userVideos.getValue().getTitle());
+	public String myVideos(List<Video> videoList){
+		String answer = "La llista de vídeos de l'usuari/a " + name + " " + surname + " és:\n";
+		for(Video v : videoList) {			
+			if(v.getCreator() == this.userId) {
+				answer = answer + "- " + v.getTitle() + "\n";
 			}
 		}
-		System.out.println("");
+		return answer;
 	}
+
 }
