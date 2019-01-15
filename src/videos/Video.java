@@ -13,7 +13,7 @@ public class Video {
 	
 	public Video(int userId, String title, List<String> tagList) throws Exception{
 		if(title.equals("")) throw new Exception("El títol del vídeo ha de tenir com a mínim un caràcter.");
-		if(tagList.size() == 0) throw new Exception ("S'ha d'incloure com a mínim una etiqueta al vídeo.");
+		if(tagList == null || tagList.isEmpty()) throw new Exception ("S'ha d'incloure com a mínim una etiqueta al vídeo.");
 		videoCount++;
 		videoId = videoCount;
 		this.title = title;
