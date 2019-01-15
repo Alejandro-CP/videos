@@ -5,7 +5,8 @@ import java.util.*;
 public class Main {
 	static List<Video> videoList = new ArrayList<>();
 	static List<String> genericTagList = new ArrayList<>(Arrays.asList("Animals", "Gatets", "Mamífers", "Gats"));
-	//static List<String> nullTagList = new ArrayList<>();
+	//static List<String> voidTagList = new ArrayList<>();
+	//static List<String> nullTagList;
 
 	public static void main(String[] args) throws Exception {
 		User user1 = new User("Juan", "Moreno", "0123456789");
@@ -22,9 +23,9 @@ public class Main {
 		/*int i = 2;
 		System.out.println(videoList.get(i).getTitle() + "\n" + videoList.get(i).getCreator() + "\n" 
 		+ videoList.get(i).getVideoId() + "\n" + videoList.get(i).getURL() + "\n" + videoList.get(i).getTags());*/
-		System.out.println(user1.myVideos(videoList));
-		System.out.println(user2.myVideos(videoList));
-		System.out.println(user3.myVideos(videoList));
+		System.out.println(user1.printVideos(videoList));
+		System.out.println(user2.printVideos(videoList));
+		System.out.println(user3.printVideos(videoList));
 
 	}
 
