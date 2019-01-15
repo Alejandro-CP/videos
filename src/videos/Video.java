@@ -1,47 +1,40 @@
 package videos;
 
+import java.net.*;
 import java.util.*;
 
 public class Video {
-	private static int idCount;
-	private String urlAddress;
-	private String title;
+	private static int videoCount;
 	private int videoId;
-	private List<String> tags;
-	private String username;
+	private int userId;
+	private URL urlAddress;
+	private String title;
+	private List<String> tagList;
 	
-	public Video(String username, String title, List<String> tags) {
-		idCount++;
-		setTitle(title);
-		setTags(tags);
-		videoId = idCount;
-		urlAddress = "https://domain.com/videos/" + videoId;
-		this.username = username;
+	public Video(int userId, String title, List<String> tagList) throws Exception{
+		if(title.equals("")) throw new Exception("El títol del vídeo ha de tenir com a mínim un caràcter.");
+		if(tagList.size() == 0) throw new Exception ("S'ha d'incloure com a mínim una etiqueta al vídeo.");
+		videoCount++;
+		videoId = videoCount;
+		this.title = title;
+		this.tagList = tagList;
+		urlAddress = new URL("http://www.domain.es/videos/"+videoId);
+		this.userId = userId;
 	}
 	
 	public String getTitle() {
 		return title;
 	}
-	public String getURL() {
-		return urlAddress;
-	}
 	public List<String> getTags(){
-		return tags;
-	}
-	public void setTitle(String newTitle) {
-		title = newTitle;
-	}
-	public void setTags(List<String> newTags) {
-		tags = newTags;
-	}
-	public String getUserName() {
-		return username;
+		return tagList;
 	}
 	public int getVideoId() {
 		return videoId;
 	}
-	public void getVideoInfo() {
-		System.out.println("Títol: " + title + ". Usuari: " + username + ". URL: " + urlAddress + ". Tags: " + tags + ".");
+	public int getCreator() {
+		return userId;
 	}
-
+	public URL getURL() {
+		return urlAddress;
+	}
 }
