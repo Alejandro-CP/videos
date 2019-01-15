@@ -38,7 +38,7 @@ public class User {
 		return registrationDate;
 	}
 	
-	public String modPassword(String password, String newPassword) throws Exception {
+	public String changePassword(String password, String newPassword) throws Exception {
 		if(this.password.equals(password)) {
 			if((newPassword.length() < minLength) || (newPassword.length() > maxLength)) throw new Exception
 				("La nova contrassenya ha de tenir un mínim de " + minLength + " caràcters i un màxim de " + maxLength + " caràcters.");
@@ -52,14 +52,14 @@ public class User {
 	public void createVideo(String title, List<String> tagList, List<Video> videoList) throws Exception{
 		videoList.add(new Video(this.userId, title, tagList));
 	}
-	public String myVideos(List<Video> videoList){
-		String answer = "La llista de vídeos de l'usuari/a " + name + " " + surname + " és:\n";
+	public String printVideos(List<Video> videoList){
+		String result = "La llista de vídeos de l'usuari/a " + name + " " + surname + " és:\n";
 		for(Video v : videoList) {			
 			if(v.getCreator() == this.userId) {
-				answer = answer + "- " + v.getTitle() + "\n";
+				result = result + "- " + v.getTitle() + "\n";
 			}
 		}
-		return answer;
+		return result;
 	}
 
 }
